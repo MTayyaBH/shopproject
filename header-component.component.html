@@ -1,0 +1,75 @@
+<header class="w-full select-none z-50 gradient-border hidden lg:block">
+    <main class="w-full h-20 bg-[#050433] flex justify-between items-center px-5">
+        <div routerLink="/home" class="flex items-center gap-x-2 ">
+            <i class="fa-solid fa-shop text-white text-4xl cursor-pointer"></i>
+            <span class="text-white font-light text-xl lg:w-[200px] cursor-pointer font-serif">
+                {{shopnameuser}}
+            </span>
+        </div>
+        <ul class="flex gap-x-12 items-center w-[500px] justify-between pb-0 mb-0 select-none text-gray-100">
+            <li id="home" routerLink="" 
+                class="cursor-pointer px-3 hover-underline-animation">Home</li>
+            <li id="myshop" routerLink="/myshop"
+                class="cursor-pointer px-3 hover-underline-animation">Our Shop</li>
+            <li id="aboutus" routerLink="/about" 
+                class="cursor-pointer px-3 hover-underline-animation">About Us</li>
+            <li id="contactus" routerLink="/contact" 
+                class="cursor-pointer px-3 hover-underline-animation">Contact Us</li>
+        </ul>
+        <div (click)="admin()" class="hover:scale-110">
+            <img class="img h-12 w-12 hoverboxshadow overflow-hidden  rounded-full object-cover  bg-white"
+                src="{{profilesource}}"
+                alt="">
+
+        </div>
+       
+
+    </main>
+  
+    <div *ngIf="isadmin" class="flex justify-end ">
+        <div *ngIf="useradmin"  (click)="admin()" id="admin"  class="px-6 py-2 rounded-b-lg bg-[#050433] text-white min-w-40  absolute top-15  flex flex-col space-y-3 justify-center items-center">
+            <button *ngIf="isuseractasadmin" routerLink="/admin">Admin</button>
+            <button routerLink="/accountdetails">Account Details</button>
+            <button routerLink="/maindashboard">Dashboard</button>
+            <button *ngIf="isuserlogin" (click)="logout()" class="Btn">
+                <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+                <div class="text">Logout</div>
+              </button>
+        </div>
+    </div>
+
+</header>
+<header class="w-full select-none z-50 lg:hidden">
+    <main class="w-full h-16 bg-[#050433] flex justify-between items-center px-5 border-b border-blue-600">
+        <div class="flex items-center gap-x-2 ">
+            <i class="fa-solid fa-shop text-white text-2xl sm:text-4xl cursor-pointer"></i>
+            <span class="text-white font-light  w-40 line-clamp-1 sm:text-xl cursor-pointer font-serif">
+                {{shopnameuser}}
+            </span>
+        </div>
+        <div *ngIf="togelclick===false" (click)="mobilemenw()" class=" cursor-pointer">
+            <i class="fa-solid fa-bars text-amber-400 text-2xl sm:text-4xl"></i>
+        </div>
+        <div *ngIf="togelclick===true" (click)="mobilemenw()" class="cursor-pointer">
+            <i class="fa-solid fa-xmark text-amber-400 text-2xl sm:text-4xl"></i>
+        </div>
+    </main>
+    <main *ngIf="togelclick" class="w-1/2  absolute z-50 right-0 bg-[#050433] h-[calc(100vh-64px)]">
+        <section class="w-full flex justify-center">
+            <aside class="space-y-7 p-5 flex-col items-center justify-center flex h-full">
+                <div class="hover:scale-110 ">
+                    <img class="img h-14 w-14 hoverboxshadow overflow-hidden  rounded-full object-cover  bg-white"
+                        src="https://logo.com/image-cdn/images/kts928pd/production/2be3d80775372697cbfdb2796084d758744f2b48-396x386.png?w=1080&q=72"
+                        alt="">
+                </div>
+                <ul
+                    class=" space-y-7 h-[200px] select-none justify-between text-gray-100 absolute flex top-[35%] flex-col items-center">
+                    <li class="cursor-pointer px-3  mx-auto w-fit hover-underline-animation">Home</li>
+                    <li class="cursor-pointer px-3  mx-auto w-fit hover-underline-animation">Our Shop</li>
+                    <li class="cursor-pointer px-3  mx-auto w-fit hover-underline-animation">About Us</li>
+                    <li class="cursor-pointer px-3  mx-auto w-fit hover-underline-animation">Contact Us</li>
+                </ul>
+            </aside>
+        </section>
+    </main>
+</header>
