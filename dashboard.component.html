@@ -1,0 +1,26 @@
+
+<nz-layout class="layout">
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+        <div class="logo"></div>
+        <ul nz-menu nzTheme="dark" nzMode="inline">
+            <li *ngIf="isuseractesasadmin" routerLink="MainDashBoard" nz-menu-item nzSelected>
+                <span nz-icon nzType="dashboard" class="maindashboardhomeicon" nzTheme="outline"></span>
+                <span>Dashboard</span>
+            </li>
+          <li nz-submenu nzTitle="Orders" nzIcon="shopping-cart">
+            <ul>
+              <li routerLink="OredrList" nz-menu-item>My Order List</li>
+              <li routerLink="PendingOrder" nz-menu-item>Pending Order</li>
+              <li routerLink="Completedorder" nz-menu-item>Completed Order</li>
+            </ul>
+          </li>
+          <li *ngIf="isuseractesasadmin" nz-submenu nzTitle="Saved Data" nzIcon="database">
+            <ul>
+              <li nz-menu-item routerLink="SavedOreder">Saved Order</li>
+            </ul>
+          </li>
+          
+        </ul>
+      </nz-sider>
+   
+</nz-layout>
