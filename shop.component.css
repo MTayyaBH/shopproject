@@ -1,0 +1,290 @@
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td,
+#customers th {
+  text-align: center;
+  border: 0.5px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background: linear-gradient(to left, rgb(174, 20, 174), rgb(52, 52, 208));
+  color: white;
+}
+
+.search-box {
+  padding: 8px;
+}
+
+.search-box input {
+  width: 188px;
+  /* margin-bottom: 4px; */
+  display: block;
+}
+
+.search-box button {
+  width: 90px;
+}
+
+.search-button {
+  margin-right: 8px;
+}
+
+.custom-section {
+  max-width: 500px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.custom-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.custom-submit {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-submit:hover {
+  background-color: #0056b3;
+}
+
+/* 3D Effect */
+.custom-section:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 10px;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.submitdiv {
+  display: flex;
+  justify-content: center;
+}
+
+.custom-section:hover:before {
+  opacity: 0.1;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .custom-section {
+    width: 90%;
+    margin: 50px auto;
+  }
+}
+
+
+#itemlist {
+  width: 33%;
+  height: 100%;
+}
+
+.shopname {
+  width: 100%;
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#headerp {
+  height: 40px;
+  background: linear-gradient(to left, rgb(174, 20, 174), rgb(52, 52, 208));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tcircule {
+  display: flex;
+}
+
+.circulp {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(to left, rgba(174, 20, 174, 0.417), rgba(52, 52, 208, 0.405));
+}
+
+.lcircule {
+  margin-right: -12px;
+}
+
+.rcircule {
+  margin-left: -12px;
+}
+
+.INVOICE {
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.customardiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.cheading {
+  font-weight: 600;
+  font-size: 10px;
+  font-family: monospace;
+}
+
+.cname {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(20, 20, 113);
+  letter-spacing: 1px;
+  text-align: start;
+}
+
+.lname {
+  width: 40px;
+  margin-top: 1px;
+  border-bottom: 1px solid rgb(11, 6, 60);
+}
+
+.cinfodiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 40px;
+}
+
+.dateheading {
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.inidname {
+  font-size: 10px;
+  font-weight: 600;
+  padding-top: 4px;
+}
+.asheading{
+  font-weight: 800;
+  font-size: 10px;
+  font-family: monospace;
+  text-align: end;
+}
+.tablehead{
+  text-align: center;
+  background: linear-gradient(to left, rgb(174, 20, 174), rgb(52, 52, 208));
+  color: white;
+}
+.tablehead th{
+  color: #fff;
+}
+#listtable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.dvetototalprice{
+  color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.termsmaindiv{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.maincidiv{
+  max-width: 200px;
+}
+.terms-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.terms-content {
+  text-align: start;
+}
+
+.terms-heading {
+  font-size: 12px;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.terms-info {
+  font-size: 10px;
+  font-family: Arial, sans-serif;
+  color: #666;
+  line-height: 1.5;
+  max-width: 250px;
+}
+
+.terms-footer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.assigned-name {
+  font-size: 17px;
+  font-weight: bold;
+  color: #333;
+  max-width: 60px;
+}
+
+.role-description {
+  font-size: 10px;
+  color: #666;
+}

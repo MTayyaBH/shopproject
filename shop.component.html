@@ -1,0 +1,266 @@
+<app-loader *ngIf="response"></app-loader>
+<section *ngIf="!response" class="w-full h-full">
+  <app-header-component class="fixed top-0 !w-full !z-50"></app-header-component>
+  <main class="flex pt-[82px]">
+    <section class="w-[67%] max-h-screen border-r-2 border-gray-500 ">
+      <h1 class="text-center py-2 text-lg font-bold text-gray-800 tracking-widest">OUR SHOP ITEMS LIST</h1>
+      <nz-spin *ngIf="loadertable" class="!text-purple-800 absolute top-[120px]" nzSize="large"></nz-spin>
+      <nz-table id="customers" #sortTable [nzData]="items" nzTableLayout="fixed">
+        <thead>
+          <tr>
+            <th class="w-16">#</th>
+            <th class="" [nzSortFn]="true" (nzSortOrderChange)="sortByName()" nzCustomFilter>Items Name
+              <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                <span class="!text-md hover:!bg-transparent !pr-3" nz-icon nzType="search"></span>
+              </nz-filter-trigger>
+            </th>
+            <th>Items Weight/Quantity</th>
+            <th>Items Price</th>
+            <th class="w-24">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of sortTable.data;let i=index">
+
+            <td>{{i+1}}</td>
+            <td>{{ itemname(data.itemName) }}</td>
+            <td>{{ weightinkg(data.itemWeight,data.itemType)}}</td>
+            <td>RS : {{ data.itemPrice }}</td>
+            <td class="space-x-3">
+              <i (click)="addItemInCard(data._id)"
+                class="font-semibold text-lg text-blue-700 cursor-pointer fa-solid fa-plus"></i>
+              <i *ngIf="isuseractesasadmin" (click)="opendrawer(data._id)"
+                class="font-semibold  text-blue-600 cursor-pointer fa-solid fa-pen-to-square"></i>
+              <!-- <i class="font-semibold text-lg text-blue-600 cursor-pointer fa-solid fa-floppy-disk"></i>
+            <i class="font-semibold text-lg text-red-500 cursor-pointer fa-solid fa-xmark"></i> -->
+              <i *ngIf="isuseractesasadmin" nz-popconfirm nzPopconfirmTitle="Sure to delete?"
+                (nzOnConfirm)="deletetableitem(data._id)"
+                class="font-semibold  text-red-600 cursor-pointer fa-solid fa-trash-can"></i>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <div class="ant-table-filter-dropdown">
+          <div class="search-box">
+            <input (keyup)="search()" (keydown)="search()" (change)="search()" [(ngModel)]="searchValue" type="text"
+              nz-input placeholder="Search Item" />
+
+          </div>
+        </div>
+      </nz-dropdown-menu>
+    </section>
+    <!-- <section id="itemlist" class="w-[33%] p-4 max-h-screen overflow-y-scroll">
+    <h1 class="text-center font-semibold text-lg py-3 border-b-2 border-dashed border-gray-600 ">{{shopnameuser}}</h1>
+   
+    <div class="flex justify-around  items-center border-b-2 border-dashed border-gray-600">
+     
+      <h1 class="text-lg">Name</h1>
+      <h1 class="text-lg">{{customer}}</h1>
+
+     
+    </div>
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead>
+        <tr>
+          <th scope="col"
+            class=" py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Item Name
+          </th>
+          <th scope="col"
+            class=" py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Item Weight/Quantity
+          </th>
+          <th scope="col"
+            class=" py-3 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Item Price
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <tr *ngFor="let item of cardItemArray">
+          <td class=" text-center py-4 whitespace-nowrap">
+            <div class="text-sm text-gray-900">{{itemname(item.itemName)}}</div>
+          </td>
+          <td class=" py-4 text-center whitespace-nowrap">
+            <div class="text-sm text-gray-900">{{weightinkg(item.itemWeight,item.itemType)}}</div>
+          </td>
+          <td class=" py-4 text-center whitespace-nowrap">
+            <div class="text-sm text-gray-900">{{itempriceadjest(item.itemPrice)}}</div>
+          </td>
+        </tr>
+        <tr class=" border-t mt-6 border-dashed border-gray-700">
+          <td class=" text-center py-4 whitespace-nowrap">
+            <div class=" font-bold text-gray-900">Total price</div>
+          </td>
+          <td class=" py-4 text-center whitespace-nowrap">
+            <div class=" font-bold text-gray-900">=</div>
+          </td>
+          <td class=" py-4 text-center whitespace-nowrap">
+            <div class="font-bold text-gray-900">{{itempriceadjest(totalPrice)}}</div>
+          </td>
+
+        </tr>
+      </tbody>
+      
+    </table>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="Plese Add item Weight in (grams)/Quantity"
+      (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzOkLoading]="isOkLoading">
+  
+      <input *nzModalContent name="weight" [(ngModel)]="itemweight" placeholder="Enter item weight in (grams)/Quantity"
+        class="w-full p-2 outline-none border border-gray-500" type="number">
+    </nz-modal>
+    <button (click)="printDiv()" id="printbtn" class="px-4 py-1 rounded-lg bg-blue-600 transition-all hover:bg-blue-700 text-white font-bold">Print or PDF</button>
+  </section> -->
+
+    <section id="itemlist" class="max-h-screen overflow-y-scroll">
+      <div id="headerp"></div>
+      <div class="shopname">
+        <div class="tcircule">
+          <div class="circulp lcircule"></div>
+          <div class="circulp ccircule"></div>
+          <div class="circulp rcircule"></div>
+        </div>
+        <div class="INVOICE">{{shopnameuser}}</div>
+      </div>
+      <div class="cinfodiv">
+        <div class="customardiv">
+          <span class="cheading ">CUSTOMER:</span>
+          <span class="cname">{{toInitials(customer)}}</span>
+          <span class="lname"></span>
+        </div>
+        <div class="customardiv">
+          <span class="dateheading">Date : {{getFormattedDate()}}</span>
+          <span class="inidname">INVOICE NO : {{invoiceid}}</span>
+        </div>
+        <div class="customardiv">
+          <span class="asheading">Assign to:</span>
+          <span class="cname">{{toInitials(assigntoname)}}</span>
+        </div>
+      </div>
+      <table id="listtable" class="min-w-full divide-y divide-gray-200 mt-8">
+        <thead>
+          <tr class="tablehead">
+            <th scope="col" class=" py-3 text-center text-xs font-medium uppercase tracking-wider">
+              Item Name
+            </th>
+            <th scope="col" class=" py-3 text-center text-xs font-medium  uppercase tracking-wider">
+              Item Weight/Quantity
+            </th>
+            <th scope="col" class=" py-3 text-center text-xs font-medium uppercase tracking-wider">
+              Item Price
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr *ngFor="let item of cardItemArray">
+            <td class=" text-center py-4 whitespace-nowrap">
+              <div class="text-sm text-gray-900">{{itemname(item.itemName)}}</div>
+            </td>
+            <td class=" py-4 text-center whitespace-nowrap">
+              <div class="text-sm text-gray-900">{{weightinkg(item.itemWeight,item.itemType)}}</div>
+            </td>
+            <td class=" py-4 text-center whitespace-nowrap">
+              <div class="text-sm text-gray-900">{{itempriceadjest(item.itemPrice)}}</div>
+            </td>
+          </tr>
+          <tr class="mt-6 tablehead">
+            <td class="dvetototalprice text-center whitespace-nowrap">
+              <div class="totalpricetd font-bold">Total price</div>
+            </td>
+            <td class="dvetototalprice text-center whitespace-nowrap">
+              <div class=" font-bold"></div>
+            </td>
+            <td class="dvetototalprice text-center whitespace-nowrap">
+              <div class="totalpricetd font-bold">{{itempriceadjest(totalPrice)}}</div>
+            </td>
+
+          </tr>
+
+        </tbody>
+        <nz-modal [(nzVisible)]="isVisible" nzTitle="Plese Add item Weight in (grams)/Quantity"
+          (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzOkLoading]="isOkLoading">
+
+          <input *nzModalContent name="weight" [(ngModel)]="itemweight"
+            placeholder="Enter item weight in (grams)/Quantity" class="w-full" type="number" nz-input nzSize="large">
+        </nz-modal>
+      </table>
+
+      <div class="terms-container">
+        <div class="terms-content">
+          <h2 class="terms-heading">Payment Terms & Conditions</h2>
+          <p class="terms-info">
+            Please send payment within 30 days of receiving this invoice. There will be a 10% interest charge per month
+            on
+            late invoices.
+          </p>
+        </div>
+        <div class="terms-footer">
+          <span class="assigned-name line-clamp-1">{{assigntoname}}</span>
+          <span class="role-description">Administrator</span>
+        </div>
+      </div>
+      <div id="orderdiv" class="w-full flex justify-between px-4 py-3 space-x-3 items-center">
+        <span *ngIf="!isuseractesasadmin" class="font-semibold text-lg text-blue-600 cursor-pointer">Order Now</span>
+        <span (click)="printDiv()" *ngIf="isuseractesasadmin"
+          class="font-semibold cursor-pointer text-lg text-blue-600">Print Now</span>
+        <!-- <span (click)="printDiv()" *ngIf="isuseractesasadmin"
+        class="font-semibold cursor-pointer text-lg text-blue-600">Save Now</span> -->
+        <!-- <span class=" cursor-pointer text-lg !text-blue-600" nz-icon nzType="save" nzTheme="outline"></span> -->
+        <div class="space-x-3">
+          <span nzTooltipColor="blue" *ngIf="isuseractesasadmin" nzTooltipTitle="Print List"
+            [nzTooltipPlacement]="['left', 'left']" nz-tooltip class="text-2xl cursor-pointer !text-blue-400"
+            (click)="printDiv()" nz-icon nzType="printer" nzTheme="outline"></span>
+          <span nzTooltipColor="blue" *ngIf="isuseractesasadmin" nzTooltipTitle="Save"
+            [nzTooltipPlacement]="['top', 'top']" nz-tooltip class="text-2xl cursor-pointer !text-blue-400"
+            (click)="savelist()" nz-icon nzType="save" nzTheme="outline"></span>
+        </div>
+        <span (click)="ordersend()" nzTooltipColor="blue" *ngIf="!isuseractesasadmin" nzTooltipTitle="Send Order"
+          [nzTooltipPlacement]="['left', 'left']" nz-tooltip class="text-2xl cursor-pointer !text-blue-400" nz-icon
+          nzType="send" nzTheme="outline"></span>
+      </div>
+      <!-- <button  id="printbtn" class="px-4 py-1 rounded-lg bg-blue-600 transition-all hover:bg-blue-700 text-white font-bold">Print or PDF</button> -->
+    </section>
+    <nz-drawer [nzClosable]="true" [nzSize]="size" [nzVisible]="visibledrawer" [nzPlacement]="placement"
+      nzTitle="Edit item" (nzOnClose)="closedrawer()">
+      <ng-container *nzDrawerContent>
+        <section class="custom-section flex justify-center items-center">
+          <div *ngIf="drawerloader" class="absolute bg-[rgb(255,255,255)] ]">
+            <nz-spin class="!text-amber-400" nzSize="large"></nz-spin>
+          </div>
+          <form class="custom-form">
+            <div class="form-group">
+              <label for="itemName">Item Name</label>
+              <input type="text" [(ngModel)]="updatedate.itemName" id="itemName" name="itemName"
+                placeholder="Enter item name" class="custom-input">
+            </div>
+            <div class="w-full form-group">
+              <label for="Type">Item Type</label>
+              <nz-select class="!w-full" nzShowSearch nzAllowClear nzPlaceHolder="Select Type" name="Type"
+                [(ngModel)]="updatedate.itemType" nzSize="large">
+                <nz-option nzLabel="Weight" nzValue="Weight"></nz-option>
+                <nz-option nzLabel="Quantity" nzValue="Quantity"></nz-option>
+
+              </nz-select>
+
+            </div>
+            <div class="form-group">
+              <label for="itemWeight">Item Weight (grams)/Quantity</label>
+              <input type="number" [(ngModel)]="updatedate.itemWeight" id="itemWeight" name="itemWeight"
+                placeholder="Enter item weight / Quantity" class="custom-input">
+            </div>
+            <div class="form-group">
+              <label for="itemPrice">Item Price</label>
+              <input type="number" [(ngModel)]="updatedate.itemPrice" id="itemPrice" name="itemPrice"
+                placeholder="Enter item price" class="custom-input">
+            </div>
+            <div class="form-group submitdiv">
+              <input type="submit" (click)="Update()" value="Update" class="custom-submit">
+            </div>
+          </form>
+        </section>
+      </ng-container>
+    </nz-drawer>
+  </main>
+</section>
