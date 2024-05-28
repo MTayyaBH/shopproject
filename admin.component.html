@@ -1,0 +1,171 @@
+<app-header-component></app-header-component>
+<main class="flex justify-evenly">
+    <section>
+        <h1 class="text-center py-2 mt-3 font-bold text-3xl">Add Item In Table</h1>
+        <section class="custom-section flex justify-center items-center">
+            <div *ngIf="Quotesubmit" class="absolute bg-[rgb(255,255,255)] ]">
+                <nz-spin class="!text-amber-400" nzSize="large"></nz-spin>
+            </div>
+            <form class="custom-form">
+                <div class="form-group">
+                    <label for="itemName">Item Name</label>
+                    <input type="text" [(ngModel)]="items.itemName" id="itemName" name="itemName"
+                        placeholder="Enter item name" class="custom-input">
+                </div>
+                <div class="w-full form-group">
+                    <label for="Type">Item Type</label>
+                    <nz-select class="!w-full" nzShowSearch nzAllowClear nzPlaceHolder="Select Type" name="Type"
+                        [(ngModel)]="items.itemType" nzSize="large">
+                        <nz-option nzLabel="Weight" nzValue="Weight"></nz-option>
+                        <nz-option nzLabel="Quantity" nzValue="Quantity"></nz-option>
+
+                    </nz-select>
+
+                </div>
+                <div class="form-group">
+                    <label for="itemWeight">Item Weight (grams)/Quantity</label>
+                    <input type="number" [(ngModel)]="items.itemWeight" id="itemWeight" name="itemWeight"
+                        placeholder="Enter item weight / Quantity" class="custom-input">
+                </div>
+                <div class="form-group">
+                    <label for="itemPrice">Item Price</label>
+                    <input type="number" [(ngModel)]="items.itemPrice" id="itemPrice" name="itemPrice"
+                        placeholder="Enter item price" class="custom-input">
+                </div>
+                <div class="form-group submitdiv">
+                    <input type="submit" (click)="submitItem()" value="Submit" class="custom-submit">
+                </div>
+            </form>
+        </section>
+    </section>
+    <section *ngIf="superadmin" class="w-[410px]">
+        <h1 class="text-center py-2 mt-3 font-bold text-2xl">Add User Act As Admin</h1>
+        <section class="custom-section flex justify-center items-center">
+            <div *ngIf="Quotesubmit" class="absolute bg-[rgb(255,255,255)] ]">
+                <nz-spin class="!text-amber-400" nzSize="large"></nz-spin>
+            </div>
+            <form class="custom-form">
+                <div class="form-group">
+                    <label for="itemName">User Name</label>
+                    <input type="text" [(ngModel)]="admindatainsert.userName" id="userName" name="userName"
+                        placeholder="Enter User name" class="custom-input">
+                </div>
+                <div class="form-group">
+                    <label for="itemName">User Email</label>
+                    <input type="email" [(ngModel)]="admindatainsert.email" id="email" name="email"
+                        placeholder="Enter User Email" class="custom-input">
+                </div>
+                <div class="form-group">
+                    <label for="itemWeight">Shop Name</label>
+                    <input type="text" [(ngModel)]="admindatainsert.shopname" id="shopname" name="shopname"
+                        placeholder="Enter User Shop Name" class="custom-input">
+                </div>
+                <div class="form-group">
+                    <label for="itemWeight">Enter Password</label>
+                    <input type="text" [(ngModel)]="admindatainsert.password" id="password" name="password"
+                        placeholder="Enter User Password" class="custom-input">
+                </div>
+                <!-- <div class="form-group">
+                    <label for="itemPrice">Conform Password</label>
+                    <input type="text" [(ngModel)]="Conformpassword" id="Conformpassword" name="Conformpassword"
+                        placeholder="Enter Again Password" class="custom-input">
+                </div> -->
+                <div class="form-group submitdiv">
+                    <input type="submit" (click)="submitAdminData()" value="Submit" class="custom-submit">
+                </div>
+            </form>
+        </section>
+    </section>
+</main>
+<hr class="mt-6 h-2">
+<main class="flex">
+    <section class="w-full max-h-screen  ">
+        <h1 class="text-center py-2 text-lg font-bold text-gray-800 tracking-widest">Your Customer List</h1>
+        <nz-table id="customers" #sortTable [nzData]="fulladmindata" nzTableLayout="fixed">
+            <thead>
+                <tr>
+                    <th class="w-16">#</th>
+                    <th class="" [nzSortFn]="true" (nzSortOrderChange)="sortByName()" nzCustomFilter>Customer Email
+                        <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0"
+                            [nzDropdownMenu]="menu">
+                            <span class="!text-md hover:!bg-transparent !pr-3" nz-icon nzType="search"></span>
+                        </nz-filter-trigger>
+                    </th>
+                    <th>Customer Name</th>
+                    <th>Customer Password</th>
+                    <th class="w-24">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of sortTable.data;let i=index">
+
+                    <td>{{i+1}}</td>
+                    <td>{{data.email }}</td>
+                    <td>{{itemname(data.userName)}}</td>
+                    <td> ****</td>
+                    <td class="space-x-3">
+                        <!-- <i (click)="addItemInCard(data._id)"
+                class="font-semibold text-lg text-blue-700 cursor-pointer fa-solid fa-plus"></i> -->
+                        <!-- <i *ngIf="isuseractesasadmin" (click)="opendrawer(data._id)"
+                class="font-semibold  text-blue-600 cursor-pointer fa-solid fa-pen-to-square"></i> -->
+                        <!-- <i class="font-semibold text-lg text-blue-600 cursor-pointer fa-solid fa-floppy-disk"></i>
+              <i class="font-semibold text-lg text-red-500 cursor-pointer fa-solid fa-xmark"></i> -->
+                        <i *ngIf="data.Type==='bann'" nz-popconfirm nzPopconfirmTitle="Sure to Unbanned This Account?"
+                            (nzOnConfirm)="deletetableitem(data._id,'unbann')"
+                            class="font-semibold  text-red-600 cursor-pointer fa-solid fa-user-lock"></i>
+                        <i *ngIf="data.Type==='unbann' || data.Type==='' || data.Type===null||data.Type===undefined" nz-popconfirm nzPopconfirmTitle="Sure to Bann this account?"
+                            (nzOnConfirm)="deletetableitem(data._id,'bann')"
+                            class="font-semibold  text-green-600 cursor-pointer fa-solid fa-user-check"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <div class="ant-table-filter-dropdown">
+                <div class="search-box">
+                    <input (keyup)="search()" (keydown)="search()" (change)="search()" [(ngModel)]="searchValue"
+                        type="text" nz-input placeholder="Search Email" />
+                </div>
+            </div>
+        </nz-dropdown-menu>
+    </section>
+    <nz-drawer [nzClosable]="true" [nzSize]="'large'" [nzVisible]="visibledrawer" [nzPlacement]="'right'"
+        nzTitle="Edit item" (nzOnClose)="closedrawer()">
+        <ng-container *nzDrawerContent>
+            <section class="custom-section flex justify-center items-center">
+                <div *ngIf="drawerloader" class="absolute bg-[rgb(255,255,255)] ]">
+                    <nz-spin class="!text-amber-400" nzSize="large"></nz-spin>
+                </div>
+                <form class="custom-form">
+                    <div class="form-group">
+                        <label for="itemName">Item Name</label>
+                        <input type="text" [(ngModel)]="updatedate.itemName" id="itemName" name="itemName"
+                            placeholder="Enter item name" class="custom-input">
+                    </div>
+                    <div class="w-full form-group">
+                        <label for="Type">Item Type</label>
+                        <nz-select class="!w-full" nzShowSearch nzAllowClear nzPlaceHolder="Select Type" name="Type"
+                            [(ngModel)]="updatedate.itemType" nzSize="large">
+                            <nz-option nzLabel="Weight" nzValue="Weight"></nz-option>
+                            <nz-option nzLabel="Quantity" nzValue="Quantity"></nz-option>
+
+                        </nz-select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="itemWeight">Item Weight (grams)/Quantity</label>
+                        <input type="number" [(ngModel)]="updatedate.itemWeight" id="itemWeight" name="itemWeight"
+                            placeholder="Enter item weight / Quantity" class="custom-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="itemPrice">Item Price</label>
+                        <input type="number" [(ngModel)]="updatedate.itemPrice" id="itemPrice" name="itemPrice"
+                            placeholder="Enter item price" class="custom-input">
+                    </div>
+                    <div class="form-group submitdiv">
+                        <input type="submit" (click)="Update()" value="Update" class="custom-submit">
+                    </div>
+                </form>
+            </section>
+        </ng-container>
+    </nz-drawer>
