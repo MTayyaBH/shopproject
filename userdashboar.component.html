@@ -1,0 +1,43 @@
+<main class=" ml-[200px] bg-[#131111]">
+    <header class="flex px-10 space-x-10 py-7">
+        <section class="w-full cursor-pointer bg-gray-100 border-4  border-pink-700 rounded-3xl text-pink-700 font-bold p-8">
+            <span class="py-4 text-lg">Total Views</span>
+            <div class="flex justify-between pt-6 px-1 items-center">
+                <span class="text-3xl">{{countviews}}</span>
+                <span class="text-xl">{{percentageviews}}%</span>
+            </div>
+        </section>
+        <section class="w-full cursor-pointer bg-gray-100 rounded-3xl border-4 border-blue-600  text-blue-600 font-bold p-8">
+            <span class="py-4 text-lg">Total Orders</span>
+            <div class="flex justify-between pt-6 px-1 items-center">
+                <span class="text-3xl ">{{totalorder}}</span>
+                <span class="text-xl ">{{totalorderpercentage}}%</span>
+            </div>
+        </section>
+        <section class="w-full cursor-pointer bg-gray-100 rounded-3xl  text-red-700 border-4 border-red-700 font-bold p-8">
+            <span class="py-4 text-lg">Pending Orders</span>
+            <div class="flex justify-between pt-6 px-1 items-center">
+                <span class="text-3xl">{{pendingorder}}</span>
+                <span class="text-xl ">{{pendingper}}%</span>
+            </div>
+        </section>
+        <section class="w-full cursor-pointer bg-gray-100 rounded-3xl  text-green-600 border-4 border-green-600 font-bold p-8">
+            <span class="py-4 text-lg">Copleted Orders</span>
+            <div class="flex justify-between pt-6 px-1 items-center">
+                <span class="text-3xl">{{completedorder}}</span>
+                <span class="text-xl ">{{copmletedper}}%</span>
+            </div>
+        </section>
+    </header>
+    <section class="!p-6 flex gap-10 overflow-hidden">
+        <section class="bg-[#3e3c3c3a] w-2/3 flex justify-center items-center rounded-[50px]">
+            <div id="barchart_values" style="width: 100%; height: 400px;"></div>
+        </section>
+        <section class="w-1/3 bg-[#3e3c3c3a] rounded-[50px]">
+            <h1 class="text-center pt-5 text-gray-400">Daily Sale Items</h1>
+            <div class="h-[80%] w-full flex justify-center items-center">
+                <div id="chart_div"></div>
+            </div>
+        </section>
+    </section>
+</main>
