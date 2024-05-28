@@ -1,0 +1,190 @@
+<app-loader *ngIf="!response"></app-loader>
+<section *ngIf="response" class="w-screen main h-screen grid overflow-hidden place-items-center">
+  <main class="flex m-auto w-[80vw] justify-center items-center !h-[80vh]">
+    <!-- <section
+      class="w-2/3 sectionmain !h-[80vh] bg-[url(https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjEwMTYtYy0wMi1rc2g2cWt1Zy5qcGc.jpg)] bg-cover bg-no-repeat flex justify-center items-center">
+      <div>
+
+        <h1 class="font-bold tracking-widest text-center text-2xl text-white font-serif">Wellcome Our Website</h1>
+        <h1 class="font-semibold tracking-widest text-sm text-center max-w-[40vw] p-5  text-gray-300 font-sans">Our
+          Website is most usefull work in any shop or market its future is gratest field in customers and users it is
+          one
+          best web from any shop or market.</h1>
+      </div>
+    </section> -->
+    <section class="flex justify-center w-1/3 bg-no-repeat bg-cover object-cover items-center h-[80vh] sectionform">
+
+      <div *ngIf="isloaderloader===true" class="absolute">
+        <nz-spin class="!text-amber-400" nzSize="large"></nz-spin>
+      </div>
+      <main *ngIf="islogin && !isforgot" class="bg-[#dddddd1a]  px-6 py-20 rounded-xl select-none">
+        <h1 class="w-full text-center text-white font-semibold mb-16 text-3xl">Sign in To Your Account</h1>
+        <form nz-form [formGroup]="loginform" class="login-form" (ngSubmit)="submitForm()">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your email!">
+              <nz-input-group nzPrefixIcon="mail">
+                <input type="text" nz-input formControlName="email" placeholder="Email" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Password!">
+              <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+                <input [type]="passwordVisible ? 'text' : 'password'" nz-input placeholder="password"
+                  formControlName="password" />
+                <ng-template #suffixTemplate>
+                  <span nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                    (click)="passwordVisible = !passwordVisible"></span>
+                </ng-template>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <div nz-row class="login-form-margin">
+            <div nz-col [nzSpan]="12" class="!flex !items-center space-x-1">
+              <input nz-checkbox formControlName="remember" type="checkbox">
+              <span class="text-white">Remember me</span>
+            </div>
+            <div nz-col [nzSpan]="12">
+              <a (click)="islforgot()" class="login-form-forgot text-white">Forgot password</a>
+            </div>
+          </div>
+          <button nz-button class="login-form-button login-form-margin text-white" [nzType]="'primary'">Log in</button>
+          <span class="text-white pr-2">Or</span>
+          <a (click)="lognorsignup()" class="text-blue-100">register now!</a>
+        </form>
+        <button routerLink="/home"
+          class="px-3 py-1 bg-red-500 hover:bg-red-600 transition-all mt-8 text-white rounded-lg font-semibold">Cancel</button>
+      </main>
+      <main *ngIf="issignup && !isforgot" class="w-full rounded-xl bg-[#dddddd1d] h-[90vh] grid place-items-center">
+        <div class="w-full">
+          <h1 class="text-center font-sans font-semibold text-white text-2xl py-8">Sign Up Your Account</h1>
+          <section class="w-full flex justify-center">
+
+            <form action="" nz-form [formGroup]="signupform" (ngSubmit)="submitsignup()" class="w-[80%]">
+              <div class="w-full">
+                <span class="text-gray-400">Your Name</span>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your username!">
+                    <nz-input-group nzPrefixIcon="user">
+                      <input class="!w-full" formControlName="userName" nz-input placeholder="Enter Full Name" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div class="w-full">
+                <span class="text-gray-400">Your Email</span>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your Email">
+                    <nz-input-group nzPrefixIcon="mail">
+                      <input class="!w-full" formControlName="email" nz-input placeholder="Enter Your Email" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div class="w-full">
+                <span class="text-gray-400">Your Password</span>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your Password!">
+                    <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+                      <input formControlName="password" [type]="passwordVisible ? 'text' : 'password'" nz-input
+                        placeholder="password" formControlName="password" />
+                      <ng-template #suffixTemplate>
+                        <span nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                          (click)="passwordVisible = !passwordVisible"></span>
+                      </ng-template>
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <ng-template #suffixTemplate>
+                  <span nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                    (click)="passwordVisible = !passwordVisible"></span>
+                </ng-template>
+              </div>
+              <div class="w-full">
+                <span class="text-gray-400">Shop Name</span>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your shop name">
+                    <!-- <nz-input-group nzPrefixIcon="shop"> -->
+                    <!-- <input formControlName="shopname" class="!w-full" nz-input placeholder="Enter Shop Nanme" /> -->
+                    <nz-select class="!w-full" nzShowSearch nzAllowClear nzPlaceHolder="Select a person" name="select"
+                      formControlName="shopname">
+                      <div *ngFor="let item of admindata">
+                        <nz-option nzLabel="{{item.shopname}}" nzValue="{{item.accountid}}"></nz-option>
+                      </div>
+                      <!-- <nz-option nzLabel="Buy Items" nzValue="Buy Items"></nz-option>
+                      <nz-option nzLabel="Visit Our Market" nzValue="Visit Our Market"></nz-option> -->
+                    </nz-select>
+                    <!-- </nz-input-group> -->
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Sign Up</button>
+              <span class="text-white pr-2">Or</span>
+              <a (click)="lognorsignup()" class="text-blue-100">Login?</a>
+            </form>
+          </section>
+        </div>
+      </main>
+      <main *ngIf="!issignup && isforgot" class="bg-[#dddddd1a]  px-6 py-7 rounded-xl select-none">
+        <h1 class="w-full text-center text-white font-semibold mb-16 text-3xl">Forgot Your Password</h1>
+        <section class="space-y-6 min-h-[56vh] flex flex-col justify-center items-center">
+          <nz-steps [nzCurrent]="current" class="loginstep">
+              <nz-step nzTitle="1"></nz-step>
+              <nz-step nzTitle="2"></nz-step>
+              <nz-step nzTitle="3"></nz-step>
+          </nz-steps>
+
+          <div *ngIf="index===1" class="steps-content">
+              <div class="w-full space-y-2">
+                  <span class="text-gray-500">Enter Your Email</span>
+                  <input nz-input [(ngModel)]="forgotemail"
+                      type="email" nzSize="large">
+              </div>
+          </div>
+          <div *ngIf="index===2" class="steps-content space-y-3">
+              <div class="w-full space-y-2">
+                  <span class="text-gray-500">Enter Your Favorite Fruit</span>
+                  <input nz-input [(ngModel)]="forgotpassword.Fruit" 
+                      type="text" nzSize="large">
+              </div>
+              <div class="w-full space-y-2">
+                  <span class="text-gray-500">Enter Your Favorite Vegetable</span>
+                  <input nz-input [(ngModel)]="forgotpassword.Vegetable" 
+                      type="text" nzSize="large">
+              </div>
+              <div class="w-full space-y-2">
+                  <span class="text-gray-500">Enter Your Favorite Colour</span>
+                  <input nz-input [(ngModel)]="forgotpassword.Colour" 
+                      type="text" nzSize="large">
+              </div>
+          </div>
+          <div *ngIf="index===3" class="steps-content space-y-3">
+              <div class="w-full space-y-2">
+                  <span class="text-gray-500">Enter Your New Password</span>
+                  <input nz-input [(ngModel)]="newpassword" 
+                      type="text" nzSize="large">
+              </div>
+              <div class="w-full space-y-2">
+                  <span class="text-gray-500">Confirm New Password</span>
+                  <input nz-input [(ngModel)]="confirmpass" 
+                      type="text" nzSize="large">
+              </div>
+          </div>
+          <div class="steps-action pt-4 space-x-4">
+              <button nz-button nzType="primary" (click)="pre()" *ngIf="current > 0">
+                  <span>Prev</span>
+              </button>
+              <button nz-button nzType="primary" (click)="next()" *ngIf="current < 2">
+                  <span>Next</span>
+              </button>
+              <button nz-button nzType="primary" class="!bg-green-600" (click)="done()" *ngIf="current === 2">
+                  <span>Update</span>
+              </button>
+          </div>
+      </section>
+        <button (click)="islforgot()"
+          class="px-3 py-1 bg-red-500 hover:bg-red-600 transition-all mt-8 text-white rounded-lg font-semibold">Back</button>
+      </main>
+    </section>
+  </main>
+</section>
