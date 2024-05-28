@@ -1,0 +1,295 @@
+[nz-carousel-content] {
+    text-align: center;
+    height: 160px;
+    line-height: 160px;
+    background: #364d79;
+    user-select: none;
+    color: #fff;
+    overflow: hidden;
+    z-index: -50;
+  }
+  @keyframes reveal {
+    from { opacity: 0; transform: rotate(-45deg); }
+    to { opacity: 1; transform: rotate(0deg); }
+  }
+  
+  .heading .spanheading {
+    display: inline-block;
+    opacity: 0;
+    
+  }
+  
+  
+  .animate {
+    animation: reveal 0.5s ease forwards;
+  }
+  
+  .spanheading:nth-child(1) { animation-delay: 0s; }
+  .spanheading:nth-child(2) { animation-delay: 0.1s; }
+  .spanheading:nth-child(3) { animation-delay: 0.2s; }
+  .spanheading:nth-child(4) { animation-delay: 0.3s; }
+  .spanheading:nth-child(5) { animation-delay: 0.4s; }
+  .spanheading:nth-child(6) { animation-delay: 0.5s; }
+  .spanheading:nth-child(7) { animation-delay: 0.6s; }
+  .spanheading:nth-child(8) { animation-delay: 0.7s; }
+  .spanheading:nth-child(9) { animation-delay: 0.8s; }
+  #mainbgimg {
+    transform-style:flat;
+    transition: background-image 1s ease-in-out 200ms;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("https://www.desktopbackground.org/download/o/2010/08/05/59560_download-for-pc-1920x1080-hd-wallpapers-and-free-stock-photo_1920x1080_h.jpg") 
+  }
+  
+  @keyframes left-to-right {
+    0% {
+      background-position: 0% ;
+    }
+    100% {
+      background-position: 100%;
+    }
+  }
+ 
+  #asidecurusal{
+    background: linear-gradient(60deg, #420285, #08BDBD) !important;
+  }
+  .wrapper {
+    background: linear-gradient(60deg, #420285, #08BDBD) !important;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .carousel {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .carousel__item {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    
+    width: 100%;
+    padding: 0 12px;
+    opacity: 0;
+    filter: drop-shadow(0 2px 2px #555);
+    will-change: transform, opacity;
+    -webkit-animation: carousel-animate-vertical 27s linear infinite;
+            animation: carousel-animate-vertical 27s linear infinite;
+  }
+  
+  .carousel__item:nth-child(1) {
+    -webkit-animation-delay: calc(3s * -1);
+            animation-delay: calc(3s * -1);
+  }
+  
+  .carousel__item:nth-child(2) {
+    -webkit-animation-delay: calc(3s * 0);
+            animation-delay: calc(3s * 0);
+  }
+  
+  .carousel__item:nth-child(3) {
+    -webkit-animation-delay: calc(3s * 1);
+            animation-delay: calc(3s * 1);
+  }
+  
+  .carousel__item:nth-child(4) {
+    -webkit-animation-delay: calc(3s * 2);
+            animation-delay: calc(3s * 2);
+  }
+  
+  .carousel__item:nth-child(5) {
+    -webkit-animation-delay: calc(3s * 3);
+            animation-delay: calc(3s * 3);
+  }
+  
+  .carousel__item:nth-child(6) {
+    -webkit-animation-delay: calc(3s * 4);
+            animation-delay: calc(3s * 4);
+  }
+  
+  .carousel__item:nth-child(7) {
+    -webkit-animation-delay: calc(3s * 5);
+            animation-delay: calc(3s * 5);
+  }
+  
+  .carousel__item:nth-child(8) {
+    -webkit-animation-delay: calc(3s * 6);
+            animation-delay: calc(3s * 6);
+  }
+  
+  .carousel__item:last-child {
+    -webkit-animation-delay: calc(-3s * 2);
+            animation-delay: calc(-3s * 2);
+  }
+  
+  .carousel__item-head {
+    border-radius: 50%;
+    background-color: #d7f7fc;
+    width: 90px;
+    height: 90px;
+    padding: 14px;
+    position: relative;
+    margin-right: -45px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+  }
+  
+  .carousel__item-body {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 16px 20px 16px 70px;
+    user-select: none;
+  }
+  
+  .title {
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-top: 10px;
+    user-select: none;
+  }
+  
+  @-webkit-keyframes carousel-animate-vertical {
+    0% {
+      transform: translateY(100%) scale(0.5);
+      opacity: 0;
+      visibility: hidden;
+    }
+    3%, 11.1111111111% {
+      transform: translateY(100%) scale(0.7);
+      opacity: 0.4;
+      visibility: visible;
+    }
+    14.1111111111%, 22.2222222222% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
+    25.2222222222%, 33.3333333333% {
+      transform: translateY(-100%) scale(0.7);
+      opacity: 0.4;
+      visibility: visible;
+    }
+    36.3333333333% {
+      transform: translateY(-100%) scale(0.5);
+      opacity: 0;
+      visibility: visible;
+    }
+    100% {
+      transform: translateY(-100%) scale(0.5);
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  
+  @keyframes carousel-animate-vertical {
+    0% {
+      transform: translateY(100%) scale(0.5);
+      opacity: 0;
+      visibility: hidden;
+    }
+    3%, 11.1111111111% {
+      transform: translateY(100%) scale(0.7);
+      opacity: 0.4;
+      visibility: visible;
+    }
+    14.1111111111%, 22.2222222222% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      visibility: visible;
+    }
+    25.2222222222%, 33.3333333333% {
+      transform: translateY(-100%) scale(0.7);
+      opacity: 0.4;
+      visibility: visible;
+    }
+    36.3333333333% {
+      transform: translateY(-100%) scale(0.5);
+      opacity: 0;
+      visibility: visible;
+    }
+    100% {
+      transform: translateY(-100%) scale(0.5);
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  [nz-carousel-content] {
+    text-align: center;
+    height: 100%;
+    line-height: 160px;
+    background: #364d79;
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .bounce-in-left {
+    animation: bounce-in-left 2.1s both;
+  }
+  
+  @keyframes bounce-in-left {
+    0% {
+      transform: translateY(50px); 
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0); 
+      opacity: 1;
+    }
+  }
+  
+  
+  /* .bg-pan-tr {
+    -webkit-animation: bg-pan-tr 10s ease-in-out infinite alternate forwards;
+            animation: bg-pan-tr 10s ease-in-out infinite alternate forwards;
+  } */
+@-webkit-keyframes bg-pan-tr {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+@keyframes bg-pan-tr {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+.container{
+  box-shadow: 0 4px 8px 0 rgba(87, 86, 86, 0.2), 0 6px 20px 0 rgba(107, 105, 105, 0.19);
+}
+ 
+.commentclint ::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+.commentclint ::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 5px grey;  */
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.commentclint ::-webkit-scrollbar-thumb {
+  background: gold; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.commentclint ::-webkit-scrollbar-thumb:hover {
+  background: rgb(236, 201, 4); 
+}

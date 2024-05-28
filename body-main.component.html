@@ -1,0 +1,583 @@
+<app-loader *ngIf="response"></app-loader>
+<main *ngIf="!response" class="w-full h-full">
+  <app-header-component></app-header-component>
+  <div class="w-full h-[50vh] sm:h-[calc(100vh-80px)]">
+    <!-- <nz-carousel nzAutoPlay>
+    <div nz-carousel-content *ngFor="let index of array"> -->
+    <div id="mainbgimg" [style.backgroundImage]="'url(' + backgroundUrl + ')'"
+      class="w-full  bg-pan-tr h-[50vh] sm:h-[calc(100vh-80px)] bg-no-repeat bg-cover object-cover ">
+      <section class="w-full flex flex-col justify-center items-center">
+        <div class="flex flex-col justify-center items-center bounce-in-left sm:mt-[8%]">
+          <h1
+            class="text-white font-bold sm:text-2xl tracking-widest text-lg sm:tracking-[15px] font-serif  text-shadow-lg shadow-amber-400 gap-4 mt-20">
+            <div class="heading select-none">
+              <span>WELLCOME</span>
+              <!-- <span class="spanheading">W</span>
+              <span class="spanheading">E</span>
+              <span class="spanheading">L</span>
+              <span class="spanheading">L</span>
+              <span class="spanheading">C</span>
+              <span class="spanheading">O</span>
+              <span class="spanheading">M</span>
+              <span class="spanheading">E</span> -->
+            </div>
+          </h1>
+          <h1
+            class="text-white bounce-in-left font-bold text-xl sm:text-5xl select-none sm:tracking-[20px] font-serif tracking-[8px] text-shadow-lg shadow-red-600 gap-4 sm:mt-5 mt-3">
+            {{username}}
+          </h1>
+
+          <div class="flex justify-center items-center mt-3 sm:mt-5">
+
+            <div *ngIf="!isuserlogin"> <button routerLink="/login" type="button"
+                class="w-24 sm:w-44 bounce-in-left
+             sm:h-10 h-8 flex justify-center select-none items-center text-white font-semibold bg-amber-400 font-serif rounded-lg  hover:bg-amber-500 transition-all">Login
+                Now</button>
+            </div>
+            <button (click)="logout()" *ngIf="isuserlogin" type="button"
+              class="w-24 sm:w-44 bounce-in-left
+             sm:h-10 h-8 flex justify-center select-none items-center text-white font-semibold bg-amber-400 font-serif rounded-lg  hover:bg-amber-500 transition-all">Log
+              Out</button>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+
+  </div>
+
+  <aside class="w-full lg:flex gap-7 space-y-4 lg:space-y-0 p-4 -mt-16 sm:-mt-24 lg:px-20 md:px-12">
+    <div class="w-full md:flex gap-7 space-y-5 md:space-y-0">
+      <div class="w-full p-4 py-5  bg-white border rounded-lg border-gray-300">
+        <div class="flex w-full justify-center pt-3 select-none cursor-pointer">
+          <img src="https://preview.colorlib.com/theme/hvacompany/img/benifit/benifit-1.png" alt="">
+        </div>
+        <h1 class="w-full text-center mt-3 font-bold text-xl font-Montserrat select-none cursor-pointer text-gray-700">
+          No
+          Upfront Payments</h1>
+      </div>
+      <div class="w-full p-4 py-5  bg-white border border-gray-300 rounded-lg">
+        <div class="flex w-full justify-center pt-3 select-none cursor-pointer">
+          <img src="https://preview.colorlib.com/theme/hvacompany/img/benifit/benifit-2.png" alt="">
+        </div>
+        <h1 class="w-full text-center mt-3 font-bold text-xl font-Montserrat select-none cursor-pointer text-gray-700">
+          Satisfaction Guarantee</h1>
+      </div>
+    </div>
+    <div class="w-full md:flex gap-7 space-y-5 md:space-y-0">
+      <div class="w-full p-4 py-5  bg-white border border-gray-300 rounded-lg">
+        <div class="flex w-full justify-center pt-3 select-none cursor-pointer">
+          <img src="https://preview.colorlib.com/theme/hvacompany/img/benifit/benifit-3.png" alt="">
+        </div>
+        <h1 class="w-full text-center mt-3 font-bold text-xl font-Montserrat select-none cursor-pointer text-gray-700">
+          Emergency Service</h1>
+      </div>
+      <div class="w-full p-4 py-5  bg-white border border-gray-300 rounded-lg">
+        <div class="flex w-full justify-center pt-3 select-none cursor-pointer">
+          <img src="https://preview.colorlib.com/theme/hvacompany/img/benifit/benifit-4.png" alt="">
+        </div>
+        <h1 class="w-full text-center mt-3 font-bold text-xl font-Montserrat select-none cursor-pointer text-gray-700">8
+          Years Experience</h1>
+      </div>
+    </div>
+  </aside>
+  <div class="flex justify-center items-center w-full mt-10 sm:mt-16">
+    <div class="flex flex-col justify-center items-center select-none">
+      <h1 class="text-amber-500 text-xl">OUR SERVICES</h1>
+      <h1 class="text-gray-700 tracking-wide text-2xl font-bold sm:tracking-wider sm:text-3xl">What We Can Offer You
+      </h1>
+    </div>
+  </div>
+  <div class="md:flex mt-6 overflow-hidden space-y-1 md:space-y-0">
+    <aside class="full md:w-1/2 h-[300px] md:h-[70vh] select-none">
+      <nz-carousel nzAutoPlay nzDotPosition="right">
+        <div nz-carousel-content *ngFor="let index of array">
+          <img class="w-full h-full" *ngIf="index===1"
+            src="https://c1.wallpaperflare.com/preview/95/532/937/under-the-roof-shopping-inside-sale.jpg" alt="">
+          <img class="w-full h-full" *ngIf="index===2"
+            src="https://c1.wallpaperflare.com/preview/335/790/453/shopping-mall-corridor-shopping-mall.jpg" alt="">
+          <img class="w-full h-full" *ngIf="index===3"
+            src="https://c0.wallpaperflare.com/preview/332/734/571/germany-berlin-mall-of-berlin-mall.jpg" alt="">
+          <img class="w-full h-full" *ngIf="index===4"
+            src="https://thumbs.dreamstime.com/b/tiled-corridor-shopping-mall-ladies-window-early-day-46240688.jpg"
+            alt="">
+
+        </div>
+      </nz-carousel>
+
+    </aside>
+    <aside id="asidecurusal" class="w-full py-48 p-4 md:p-0 md:py-0 md:w-1/2">
+      <div class='wrapper'>
+        <div class='carousel'>
+          <div class='carousel__item'>
+            <div class='carousel__item-head'>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQthzTJAzJP8Vmh0BQrUsx4fAqlV55jE501tjNzQ-FZ7g&s"
+                alt="">
+            </div>
+            <div class='carousel__item-body'>
+              <p class='title'>Data Gee</p>
+              <p>PKR: RS 490</p>
+            </div>
+          </div>
+          <div class='carousel__item'>
+            <div class='carousel__item-head'>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1AyrNZG_8VLpzIJi7bEDPuFM2Hg2NGhtS4RrnCmF6Pyz8silC56IgIJNsL9bvKRS3ioU&usqp=CAU"
+                alt="">
+            </div>
+            <div class='carousel__item-body'>
+              <p class='title'>Lays</p>
+              <p>PKR: RS 100</p>
+            </div>
+          </div>
+          <div class='carousel__item'>
+            <div class='carousel__item-head'>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRncGV-WZy80RuIGjRaF2ovCt_FhXalyHAxhsawe5LSiA&s"
+                alt="">
+            </div>
+            <div class='carousel__item-body'>
+              <p class='title'>Kurkure</p>
+              <p>PKR: RS 80</p>
+            </div>
+          </div>
+          <div class='carousel__item'>
+            <div class='carousel__item-head'>
+              <img
+                src="https://png.pngtree.com/png-clipart/20210205/ourmid/pngtree-rasgulla-png-indian-sweet-png-image_2884894.jpg"
+                alt="">
+            </div>
+            <div class='carousel__item-body'>
+              <p class='title'>Mithai</p>
+              <p>PKR: RS 800 1KG</p>
+            </div>
+          </div>
+          <div class='carousel__item'>
+            <div class='carousel__item-head'>
+              <img
+                src="https://w7.pngwing.com/pngs/462/788/png-transparent-brown-almond-nuts-almond-nutrient-peach-nutrition-juglans-nuts-nuts-hand-drawing-almond-food-hand-root.png"
+                alt="">
+            </div>
+            <div class='carousel__item-body'>
+              <p class='title'>Almond(Badam)</p>
+              <p>PKR: RS 1400 .1kg</p>
+            </div>
+          </div>
+          <div class='carousel__item'>
+            <div class='carousel__item-head'>
+              <img
+                src="https://w7.pngwing.com/pngs/815/1020/png-transparent-pistacho-nuts-pistachio-nut-dried-fruit-turkish-cuisine-cashew-cleft-pistachios-food-peanut-fruit-thumbnail.png"
+                alt="">
+            </div>
+            <div class='carousel__item-body'>
+              <p class='title'>Pista</p>
+              <p>PKR: RS 1400 .1kg</p>
+            </div>
+          </div>
+          <div class='carousel__item'>
+            <div class='carousel__item-head'>
+              <img
+                src="https://e7.pngegg.com/pngimages/696/829/png-clipart-jazireh-negin-date-palm-dates-mazafati-zahedi-date-date-palm-food-nuts-thumbnail.png"
+                alt="">
+            </div>
+            <div class='carousel__item-body'>
+              <p class='title'>Khajur</p>
+              <p>PKR: RS 1600 KG</p>
+            </div>
+          </div>
+          <div class='carousel__item'>
+            <div class='carousel__item-head'>
+              <img
+                src="https://e7.pngegg.com/pngimages/493/323/png-clipart-cashew-dried-fruit-nut-food-roasting-others-food-dried-fruit.png"
+                alt="">
+            </div>
+            <div class='carousel__item-body'>
+              <p class='title'>Kaju</p>
+              <p>PKR: RS 500 .2kg</p>
+            </div>
+          </div>
+          <div class='carousel__item'>
+            <div class='carousel__item-head'>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwjMEBMdFEH4N8bdlo-EzcVxfTmfnF5sw0_2aWkCNCjg&s"
+                alt="">
+            </div>
+            <div class='carousel__item-body'>
+              <p class='title'>Ras Malai</p>
+              <p>PKR: RS 400</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+  <aside
+    class="w-full lg:flex gap-7 space-y-4 lg:space-y-0 p-4 md:py-7 lg:py-10 lg:items-center lg:px-20 md:px-12 bg-blue-950">
+    <div class="w-full md:flex gap-7 space-y-5 md:space-y-0">
+      <div class="w-full p-4 py-5  ">
+        <div class="flex w-full justify-center pt-3 select-none cursor-pointer">
+          <img src="https://preview.colorlib.com/theme/hvacompany/img/counter/ci-1.png" alt="">
+        </div>
+        <h1 class="w-full text-white text-center mt-3 font-bold text-3xl  select-none cursor-pointer">2008</h1>
+        <h1 class="w-full text-center text-amber-400 mt-3 font-bold text-xl font-serif select-none cursor-pointer">
+          Satisfied Customers</h1>
+      </div>
+      <div class="w-full p-4 py-5  ">
+        <div class="flex w-full justify-center pt-3 select-none cursor-pointer">
+          <img src="https://preview.colorlib.com/theme/hvacompany/img/counter/ci-2.png" alt="">
+        </div>
+        <h1 class="w-full text-white text-center mt-3 font-bold text-3xl  select-none cursor-pointer">800</h1>
+        <h1 class="w-full text-center text-amber-400 mt-3 font-bold text-xl font-serif select-none cursor-pointer">
+          Professional</h1>
+      </div>
+    </div>
+    <div class="w-full md:flex gap-7 space-y-5 md:space-y-0">
+      <div class="w-full p-4 py-5  ">
+        <div class="flex w-full justify-center pt-3 select-none cursor-pointer">
+          <img src="https://preview.colorlib.com/theme/hvacompany/img/counter/ci-3.png" alt="">
+        </div>
+        <h1 class="w-full text-white text-center mt-3 font-bold text-3xl  select-none cursor-pointer">6400</h1>
+        <h1 class="w-full text-center text-amber-400 mt-3 font-bold text-xl font-serif select-none cursor-pointer">
+          Equipment Sold</h1>
+      </div>
+      <div class="w-full p-4 py-5  ">
+        <div class="flex w-full justify-center pt-3 select-none cursor-pointer">
+          <img src="https://preview.colorlib.com/theme/hvacompany/img/counter/ci-4.png" alt="">
+        </div>
+        <h1 class="w-full text-white text-center mt-3 font-bold text-3xl  select-none cursor-pointer">52</h1>
+        <h1 class="w-full text-center text-amber-400 mt-3 font-bold text-xl font-serif select-none cursor-pointer">
+          Branches Operating</h1>
+      </div>
+    </div>
+  </aside>
+  <section class="lg:flex ">
+    <div class="w-full flex justify-center items-center lg:w-1/2">
+      <div *ngIf="Quotesubmit===true" class="absolute h-full bg-[rgb(255,255,255)] ]">
+        <nz-spin class="!text-amber-400" nzSize="large"></nz-spin>
+      </div>
+
+      <form class="w-full space-y-6 h-full bg-gray-900 p-10" method="post">
+        <h1 class="text-2xl font-bold text-white ">Get A Quote</h1>
+        <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex">
+          <div class="w-full">
+            <label class="text-white text-sm w-full" for="">Your Name
+              <input id="quotename" nz-input placeholder="Enter Your Name" nzAllowClear [(ngModel)]="quote.name"
+                name="name" type="text" nzSize="large" />
+            </label>
+          </div>
+          <div class="w-full">
+            <label class="text-white text-sm w-full" for="">Your Number
+              <input nz-input placeholder="Enter Your Phone No:" nzAllowClear [(ngModel)]="quote.number" name="number"
+                type="number" nzSize="large" />
+            </label>
+          </div>
+        </div>
+        <div class="space-y-4 md:space-y-0 md:space-x-4 md:flex w-full !mb-6">
+          <div class="!w-full">
+            <label class="text-white text-sm w-full " for="">Your Email
+              <input class="!w-full" nzAllowClear nz-input placeholder="Enter Your Name" [(ngModel)]="quote.email"
+                name="email" type="email" nzSize="large" />
+            </label>
+          </div>
+          <div class="!w-full">
+            <label class="text-white text-sm w-full " for="">Enter Type
+              <nz-select class="!w-full" nzShowSearch nzAllowClear nzPlaceHolder="Select a person" name="select"
+                [(ngModel)]="quote.select" nzSize="large">
+                <nz-option nzLabel="For Job" nzValue="For Job"></nz-option>
+                <nz-option nzLabel="Buy Items" nzValue="Buy Items"></nz-option>
+                <nz-option nzLabel="Visit Our Market" nzValue="Visit Our Market"></nz-option>
+              </nz-select>
+            </label>
+          </div>
+        </div>
+        <label class="text-white w-full text-sm" for="">Enter Your Message
+          <textarea class="w-full" rows="4" nz-input [(ngModel)]="quote.message" placeholder="Enter Your Message"
+            name="message"></textarea>
+        </label>
+        <div class="w-full flex justify-center">
+
+          <button (click)="storeUserQuote()"
+            class="w-24 bounce-in-left py-2  font-semibold rounded-full text-white bg-amber-400 hover:bg-amber-500 transition-all">Submit</button>
+        </div>
+      </form>
+    </div>
+    <aside class="w-full md:w-1/2 max-h-[600px] md:flex select-none gap-3 flex justify-center items-center">
+      <a class=" absolute  text-blue-600 text-shadow-sm shadow-blue-700 cursor-pointer text-6xl" href=""
+        target="_blank"><i class="fa-regular fa-circle-play"></i></a>
+      <div class="flex w-full h-full">
+        <img class="w-full h-full"
+          src="https://media.istockphoto.com/id/534800403/photo/man-buying-beer-in-supermarket.jpg?s=612x612&w=0&k=20&c=f0NGHat2Cny52S-P1RitHNCGi57taz0JP4N1xilkc_A="
+          alt="">
+        <img class="w-full h-full hidden md:block lg:hidden"
+          src="https://thumbs.dreamstime.com/b/concerned-black-man-holding-grocery-shopping-list-calculating-expensive-food-prices-looking-shelf-wih-products-standing-236311679.jpg"
+          alt="">
+      </div>
+
+    </aside>
+  </section>
+  <div class="flex justify-center items-center w-full my-10">
+    <div
+      class="w-auto p-4 bg-no-repeat bg-center bg-[url(https://preview.colorlib.com/theme/hvacompany/img/icon/fan.png)]">
+      <h4 class="text-center text-blue-500 text-xl tracking-wide select-none font-Montserrat">TESTIMONIAL</h4>
+      <h1 class=" text-center font-bold text-gray-800 tracking-wide select-none text-4xl font-Montserrat">What Cilents
+        Say?</h1>
+    </div>
+  </div>
+  <section class="flex px-6 md:px-14 lg:px-20 gap-x-7 ">
+    <div class="w-full commentclint border-t-[6px] cursor-default select-none   hover:border-amber-400">
+      <div
+        class="md:px-10  md:py-14 max-h-[380px] overflow-y-scroll md:text-2xl md:leading-10 px-5 py-7 text-lg leading-9 font-thin text-gray-500 container rounded-b-lg">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
+          gravida.</p>
+      </div>
+      <div class="-mt-6">
+        <i class="fa-solid fa-sort-down text-4xl text-white pl-[4.4rem]"></i>
+      </div>
+      <div class="flex items-center pl-12 my-5">
+        <div class="">
+          <img src="https://preview.colorlib.com/theme/hvacompany/img/testimonial/ta-1.png" alt="">
+        </div>
+        <div class="pl-5">
+          <h4 class="text-gray-600 md:text-xl tracking-wider">Cynthia Moore</h4>
+          <span class="text-blue-500">Kansas, USA</span>
+        </div>
+      </div>
+    </div>
+    <div class="w-full commentclint border-t-[6px] cursor-default select-none   hover:border-amber-400">
+      <div
+        class="md:px-10  md:py-14 max-h-[380px] overflow-y-scroll md:text-2xl md:leading-10 px-5 py-7 text-lg leading-9 font-thin text-gray-500 container rounded-b-lg">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
+          gravida.</p>
+      </div>
+      <div class="-mt-6">
+        <i class="fa-solid fa-sort-down text-4xl text-white pl-[4.4rem]"></i>
+      </div>
+      <div class="flex items-center pl-12 my-5">
+        <div class="">
+          <img src="https://preview.colorlib.com/theme/hvacompany/img/testimonial/ta-1.png" alt="">
+        </div>
+        <div class="pl-5">
+          <h4 class="text-gray-600 md:text-xl tracking-wider">Cynthia Moore</h4>
+          <span class="text-blue-500">Kansas, USA</span>
+        </div>
+      </div>
+    </div>
+    <div class="w-full commentclint border-t-[6px] cursor-default select-none   hover:border-amber-400">
+      <div
+        class="md:px-10  md:py-14 max-h-[380px] overflow-y-scroll md:text-2xl md:leading-10 px-5 py-7 text-lg leading-9 font-thin text-gray-500 container rounded-b-lg">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
+          gravida.</p>
+      </div>
+      <div class="-mt-6">
+        <i class="fa-solid fa-sort-down text-4xl text-white pl-[4.4rem]"></i>
+      </div>
+      <div class="flex items-center pl-12 my-5">
+        <div class="">
+          <img src="https://preview.colorlib.com/theme/hvacompany/img/testimonial/ta-1.png" alt="">
+        </div>
+        <div class="pl-5">
+          <h4 class="text-gray-600 md:text-xl tracking-wider">Cynthia Moore</h4>
+          <span class="text-blue-500">Kansas, USA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div
+    class="bg-cover px-8 bg-no-repeat bg-fixed select-none py-16 space-y-3 bg-[url(https://png.pngtree.com/background/20230520/original/pngtree-shopping-bags-3d-background-mock-up-picture-image_2679541.jpg)]">
+    <h1 class="text-center text-white font-semibold md:tracking-widest md:text-xl">
+      MODERN THINGES FOR YOUR MODERN LIFE
+    </h1>
+    <h1 class="text-center text-white font-bold md:tracking-widest md:text-3xl tracking-wider text-xl">
+      VISIT OUR SHOP AND GER, MORE DISCOUNT
+    </h1>
+    <div class="flex justify-center">
+      <button
+        class="md:w-60 w-40 rounded-md hover:bg-amber-400 transition-all mt-5 py-3 flex justify-center bg-amber-300">
+        <a class="text-gray-900 md:text-lg text-sm  hover:text-white font-semibold" href="#">
+          INSATALLATION NOW
+        </a>
+      </button>
+    </div>
+  </div>
+  <div class="flex justify-center items-center w-full my-10">
+    <div
+      class="w-auto p-4 bg-no-repeat bg-center bg-[url(https://preview.colorlib.com/theme/hvacompany/img/icon/fan.png)]">
+      <h4 class="text-center text-blue-500 text-xl tracking-wide select-none font-Montserrat">LATEST NEWS</h4>
+      <h1 class=" text-center font-bold text-gray-800 tracking-wide select-none text-4xl font-Montserrat">HVAC Tips &
+        Tricks</h1>
+    </div>
+  </div>
+  <section class="p-10 lg:flex gap-8 space-y-6 lg:space-y-0 select-none">
+    <div class="md:flex gap-8 space-y-6 md:space-y-0 w-full lg:w-2/3">
+      <div class="w-full">
+        <img class=" w-full h-[300px] object-cover"
+          src="https://png.pngtree.com/background/20230612/original/pngtree-supermarket-section-with-a-very-dark-aisle-picture-image_3180865.jpg"
+          alt="">
+        <div class="-mt-5 flex justify-center"><span class="bg-amber-300 px-3 py-2 text-white text-sm">TIPS &
+            TRICKS</span></div>
+        <h1 class="text-2xl mt-6">Latest variety of bakery available here</h1>
+        <div class="space-x-2">
+          <span>By</span>
+          <span class="text-blue-500">Eleanor Hampton</span>
+          <span class="border-l border-gray-300 pl-2">April 16, 2024</span>
+        </div>
+      </div>
+      <div class="w-full">
+        <img class=" w-full h-[300px] object-cover"
+          src="https://cdn.pixabay.com/photo/2018/02/21/10/46/stock-3170020_1280.jpg" alt="">
+        <div class="-mt-5 flex justify-center"><span class="bg-amber-300 px-3 py-2 text-white text-sm">TIPS &
+            TRICKS</span></div>
+        <h1 class="text-2xl mt-6">All variety of products available our shop</h1>
+        <div class="space-x-2">
+          <span>By</span>
+          <span class="text-blue-500">Eleanor Hampton</span>
+          <span class="border-l border-gray-300 pl-2">April 16, 2024</span>
+        </div>
+      </div>
+    </div>
+    <div class="w-full md:w-[48%] lg:w-[32.3%]">
+      <img class=" w-full h-[300px] object-cover"
+        src="https://png.pngtree.com/thumb_back/fh260/background/20230518/pngtree-the-candy-shop-at-gordon-s-wizarding-world-image_2536653.jpg"
+        alt="">
+      <div class="-mt-5 flex justify-center"><span class="bg-amber-300 px-3 py-2 text-white text-sm">TIPS &
+          TRICKS</span>
+      </div>
+      <h1 class="text-2xl mt-6"> Dry Fruit also available here</h1>
+      <div class="space-x-2">
+        <span>By</span>
+        <span class="text-blue-500">Eleanor Hampton</span>
+        <span class="border-l border-gray-300 pl-2">April 16, 2024</span>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="bg-white dark:bg-gray-900 select-none mt-5">
+    <div class="mx-auto w-full ">
+      <div class="grid grid-cols-2 gap-8  py-6 lg:py-8 md:grid-cols-4 px-6">
+        <div>
+          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
+          <ul class="text-gray-500 dark:text-gray-400 font-medium">
+            <li class="mb-4">
+              <a href="#" class=" hover:underline">About</a>
+            </li>
+            <li class="mb-4">
+              <a href="#" class="hover:underline">Careers</a>
+            </li>
+            <li class="mb-4">
+              <a href="#" class="hover:underline">Brand Center</a>
+            </li>
+            <li class="mb-4">
+              <a href="#" class="hover:underline">Blog</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
+          <ul class="text-gray-500 dark:text-gray-400 font-medium">
+            <li class="mb-4">
+              <a href="#" class="hover:underline">Discord Server</a>
+            </li>
+            <li class="mb-4">
+              <a href="#" class="hover:underline">Twitter</a>
+            </li>
+            <li class="mb-4">
+              <a href="#" class="hover:underline">Facebook</a>
+            </li>
+            <li class="mb-4">
+              <a href="#" class="hover:underline">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+          <ul class="text-gray-500 dark:text-gray-400 font-medium">
+            <li class="mb-4">
+              <a href="#" class="hover:underline">Privacy Policy</a>
+            </li>
+            <li class="mb-4">
+              <a href="#" class="hover:underline">Licensing</a>
+            </li>
+            <li class="mb-4">
+              <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Download</h2>
+          <ul class="text-gray-500 dark:text-gray-400 font-medium">
+            <li class="mb-4">
+              <a href="#" class="hover:underline">iOS</a>
+            </li>
+            <li class="mb-4">
+              <a href="#" class="hover:underline">Android</a>
+            </li>
+            <li class="mb-4">
+              <a href="#" class="hover:underline">Windows</a>
+            </li>
+            <li class="mb-4">
+              <a href="#" class="hover:underline">MacOS</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="px-4 w-full py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
+        <span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2024
+          <a href="#">Flowbite™</a>. All Rights Reserved.
+        </span>
+        <div class="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
+          <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              viewBox="0 0 8 19">
+              <path fill-rule="evenodd"
+                d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="sr-only">Facebook page</span>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              viewBox="0 0 21 16">
+              <path
+                d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z" />
+            </svg>
+            <span class="sr-only">Discord community</span>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              viewBox="0 0 20 17">
+              <path fill-rule="evenodd"
+                d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="sr-only">Twitter page</span>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="sr-only">GitHub account</span>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="sr-only">Dribbble account</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</main>
