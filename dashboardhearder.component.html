@@ -1,0 +1,37 @@
+<header class="w-full select-none fixed top-0 z-50 gradient-border ">
+    <main class="w-full h-20 bg-[#050433] flex justify-between items-center px-5">
+        <div (click)="gotohome()" class="flex items-center gap-x-2 ">
+            <i class="fa-solid fa-shop text-white text-4xl cursor-pointer"></i>
+            <span class="text-white font-light text-xl lg:w-[200px] cursor-pointer font-serif">
+                {{shopnameuser}}
+            </span>
+        </div>
+        <!-- <ul class="flex gap-x-12 items-center w-[500px] justify-between mt-3 select-none text-gray-100">
+            <li id="home" routerLink="" 
+                class="cursor-pointer px-3 hover-underline-animation">Home</li>
+            <li id="myshop" routerLink="/myshop"
+                class="cursor-pointer px-3 hover-underline-animation">Our Shop</li>
+            <li id="aboutus" routerLink="/about" 
+                class="cursor-pointer px-3 hover-underline-animation">About Us</li>
+            <li id="contactus" routerLink="/contact" 
+                class="cursor-pointer px-3 hover-underline-animation">Contact Us</li>
+        </ul> -->
+        <div (click)="admin()" class="hover:scale-110">
+            <img class="img h-14 w-14 hoverboxshadow overflow-hidden  rounded-full object-cover  bg-white"
+                src="{{profilesource}}"
+                alt="">
+
+        </div>
+       
+
+    </main>
+  
+    <div *ngIf="isadmin" class="flex justify-end ">
+        <div *ngIf="useradmin"  (click)="admin()" id="admin"  class="px-6 py-2 rounded-b-lg bg-[#050433] text-white  absolute top-15  flex flex-col space-y-3 justify-center items-center">
+            <button *ngIf="isuseractasadmin" routerLink="/admin">Admin</button>
+            
+            <button routerLink="/accountdetails">Account Details</button>
+        </div>
+    </div>
+
+</header>
